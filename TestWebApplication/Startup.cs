@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using WebLayer.Services;
 
 namespace TestWebApplication
 {
@@ -18,6 +20,11 @@ namespace TestWebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var autSevice = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+            autSevice.AddJwtBearer(options =>
+            {
+                JwtTokenImplementation.JwtTokenPArameters(options, Configuration);
+            });
             services.AddMvc();
             services.AddSwaggerGen(c =>
             {
