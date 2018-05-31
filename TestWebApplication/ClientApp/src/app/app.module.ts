@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
 import { LoginActivate } from './services/LoginActivate';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LoginComponentComponent,
-    DashboardcomponentComponent
+    DashboardcomponentComponent,
+    FieldErrorDisplayComponent,
   ],
   imports: [
     BrowserModule,

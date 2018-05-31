@@ -25,6 +25,8 @@ namespace TestWebApplication
             {
                 JwtTokenImplementation.JwtTokenPArameters(options, Configuration);
             });
+            services.AddTransient<IApplicationUserService, ApplicationUserSevice>();
+            services.AddTransient<ITokenManagement, TokenManagement>();
             services.AddMvc();
             services.AddSwaggerGen(c =>
             {
@@ -48,7 +50,14 @@ namespace TestWebApplication
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseAuthentication();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
+
         }
     }
 }

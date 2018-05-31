@@ -12,7 +12,7 @@ export class AuthenticationService {
     public token: string;
 
 
-    constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl, private _persistantStorage: PersistStorageUtility) {
+    constructor(private http: HttpClient, private _persistantStorage: PersistStorageUtility) {
         // set token if saved in local storage
 
     }
